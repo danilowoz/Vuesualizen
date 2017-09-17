@@ -1,9 +1,6 @@
 <template>
   <div class="list">
 
-    <div class="view">
-      
-    </div>
 
     <div class="config">
       <h1>My goals</h1>
@@ -14,46 +11,54 @@
         <label for="desc">Description</label>
         <textarea required ref="desc"></textarea>
 
-        <input type="text" placeholder="Imagem">
-        <button @click.prevent="add">+</button>
+        <input ref="image" type="text" placeholder="Imagem">
 
         <button @click.prevent="add">Add</button>
       </form>
+      <List :items='items' :remove='remove'></List>
     </div>
 
   </div>
 </template>
 
 <script>
+// import Vue from 'vue';
+import List from '@/components/List';
+
 const localId = 'visualizem';
+
 
 export default {
   name: 'list',
+  components: { List },
   data() {
     return {
       items: [],
     };
   },
   methods: {
-    remove(item) {
-      this.items.splice(this.items.indexOf(item), 1);
+    remove(index) {
+      this.items.splice(index, 1);
     },
     add() {
       const title = this.$refs.title.value;
       const desc = this.$refs.desc.value;
+      const image = this.$refs.image.value;
 
-      if (title !== '' && desc !== '') {
+      if (title !== '' && desc !== '' && image !== '') {
         this.$set(this.items, this.items.length, {
           title,
           desc,
+          image,
         });
-      }
 
-      this.cleanInput();
+        this.cleanInput();
+      }
     },
     cleanInput() {
       this.$refs.title.value = '';
       this.$refs.desc.value = '';
+      this.$refs.image.value = '';
     },
     getLocalstorage() {
       return JSON.parse(localStorage.getItem(localId));
