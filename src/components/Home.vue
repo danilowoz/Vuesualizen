@@ -1,6 +1,7 @@
 <template>
   <div class="list">
 
+    <Main :items="items"></Main>
 
     <div class="config">
       <h1>My goals</h1>
@@ -15,22 +16,21 @@
 
         <button @click.prevent="add">Add</button>
       </form>
-      <List :items='items' :remove='remove'></List>
+      <List :items="items" :remove="remove"></List>
     </div>
 
   </div>
 </template>
 
 <script>
-// import Vue from 'vue';
 import List from '@/components/List';
+import Main from '@/components/Main';
 
 const localId = 'visualizem';
 
-
 export default {
   name: 'list',
-  components: { List },
+  components: { List, Main },
   data() {
     return {
       items: [],
