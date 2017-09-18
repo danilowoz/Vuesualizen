@@ -3,11 +3,12 @@
     <div class="list-item" v-for="(item, index) in items">
       <span>
         <img :src="item.image" />
+        <button @click.prevent="remove(index)">Remover</button>
       </span>
       <span>
         <p><span>Title:</span> {{item.title}}</p>
+        <p><span>Deadline:</span> {{item.time}}</p>
         <p><span>Description:</span> {{item.desc}}</p>
-        <button @click.prevent="remove(index)">×</button>
       </span>
     </div>
   </div>
@@ -21,21 +22,49 @@ export default {
 
 <style scoped>
   .list-item {
-    max-width: 600px;
-    margin: 0 auto;
-    border-bottom: 1px solid #eee;
+    margin: 0 -20px;
+    border-top: 1px solid #eee;
     text-align: left;
-    padding: 15px 0;
+    padding: 15px 20px;
     display: flex;
+    background: #fafafa;
   }
+
   p {
     line-height: 1.2;
-    margin: 0;
+    margin: 0 0 10px;
   }
+
+  p span {
+    font-size: 12px;
+    display: block;
+    color: #333;
+  }
+
   img {
     width: 100px;
     height: auto;
     display: block;
     margin-right: 15px;
+  }
+
+  button {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #aaa;
+    border-radius: 3px;
+    line-height: 20px;
+    width: 100px;
+    margin-top: 20px;
+    text-align: center;
+    transition: all .3s ease;
+    cursor: pointer;
+    outline: none;
+  }
+
+  button:hover {
+    background: #b33423;
+    border: 1px solid #b33423;
+    color: #fff;
   }
 </style>

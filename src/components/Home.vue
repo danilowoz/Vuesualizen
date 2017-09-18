@@ -2,23 +2,28 @@
   <div class="list">
 
     <Clock class="clock"></Clock>
-    <Main :items="items"></Main>
+    <Focus :items="items"></Focus>
 
-    <div class="config">
+    <div class="config edit">
       <h1>My goals</h1>
       <form action="">
-        <label for="title">Title</label>
-        <input required ref="title" type="text">
+        <div class="image-wrap">
+          <label>Image</label>
+          <input accept="image/*" placeholder="Paste an url for the image" ref="imagem" type="text">
+          <button @click.prevent="add">Add goal</button>
+        </div>
 
-        <label for="desc">Description</label>
-        <textarea required ref="desc"></textarea>
+        <span>
+          <label for="title">Title</label>
+          <input placeholder="Small and easy to remember" required ref="title" type="text">
 
-        <label for="time">Time</label>
-        <input required ref="time" type="date" />
+          <label for="time">Deadline</label>
+          <input placeholder="A deadline" required ref="time" type="date" />
 
-        <input ref="image" type="text" placeholder="Imagem">
+          <label for="desc">Description<small></small></label>
+          <textarea placeholder="Tell with more details" required ref="desc"></textarea>
+        </span>
 
-        <button @click.prevent="add">Add</button>
       </form>
       <List :items="items" :remove="remove"></List>
     </div>
@@ -28,14 +33,14 @@
 
 <script>
 import List from '@/components/List';
-import Main from '@/components/Main';
+import Focus from '@/components/Focus';
 import Clock from '@/components/Clock';
 
 const localId = 'visualizem';
 
 export default {
   name: 'list',
-  components: { List, Main, Clock },
+  components: { List, Focus, Clock },
   data() {
     return {
       items: [],
@@ -48,7 +53,7 @@ export default {
     add() {
       const title = this.$refs.title.value;
       const desc = this.$refs.desc.value;
-      const image = this.$refs.image.value;
+      const image = this.$refs.imagem.value;
       const time = this.$refs.time.value;
 
       if (title !== '' && desc !== '' && image !== '' && time !== '') {
@@ -65,7 +70,7 @@ export default {
     cleanInput() {
       this.$refs.title.value = '';
       this.$refs.desc.value = '';
-      this.$refs.image.value = '';
+      this.$refs.imagem.value = '';
       this.$refs.time.value = '';
     },
     getLocalstorage() {
@@ -87,5 +92,112 @@ export default {
 </script>
 
 <style scoped>
+.config {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 30vw;
+  background: #fff;
+  z-index: 9999999;
+  padding: 20px;
+  transition: all .3s ease;
+}
+
+.config.edit {
+  right: -100%;
+}
+
+.list.edit:before {
+  content: "";
+  background: #a1b323;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999999;
+  opacity: .7;
+}
+
+.config h1 {
+  margin: 0;
+  color: #a1b323;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+form {
+  padding-bottom: 20px;
+  display: flex;
+  width: 100%;
+}
+
+form span {
+  width: 100%;
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  font-size: 12px;
+}
+
+form label:first-child {
+  margin-top: 0;
+}
+
+form input,
+form textarea {
+  border: 1px solid #eee;
+  padding: 5px 10px;
+  height: 30px;
+  border-radius: 3px;
+  resize: none;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all .3s ease;
+}
+
+form input:focus,
+form textarea:focus{
+  outline:none;
+  border:1px solid #a1b323;
+}
+
+form textarea {
+  height: 50px;
+}
+
+form .image-wrap {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin-right: 15px;
+  padding: 0;
+  border-radius: 3px;
+  position: relative;
+}
+
+form .image-wrap input {
+  line-height: 85px;
+  width: 100px;
+  height: 100px;
+  display: block;
+}
+
+form button {
+  background: #a1b323;
+  border: 0;
+  color: white;
+  border-radius: 3px;
+  line-height: 20px;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  transition: all .3s ease;
+}
 
 </style>

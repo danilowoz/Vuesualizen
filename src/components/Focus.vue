@@ -1,5 +1,5 @@
 <template>
-  <div class="image" v-bind:style="{backgroundImage: 'url(' + itemFiltered.image+ ')'}">
+  <div class="image" v-bind:style="{backgroundImage: 'url(' + itemFiltered.image + ')'}">
     <div class="content">
       <span>
         <h1>{{itemFiltered.title}} <small>until {{itemFiltered.time}}</small></h1>
