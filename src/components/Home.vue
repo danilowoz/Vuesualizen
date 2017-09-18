@@ -112,7 +112,8 @@ export default {
   z-index: 9999999;
   padding: 20px;
   transition: all .5s ease;
-  right: calc(-30vw - 40px);
+  right: 0;
+  transform: translateX(calc(30vw + 40px));
 }
 
 .list.edit:before {
@@ -128,7 +129,7 @@ export default {
 }
 
 .config.edit {
-  right: 0;
+  transform: translateX(0);
 }
 
 .config h1 {

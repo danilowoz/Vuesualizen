@@ -5,6 +5,8 @@
 </template>
 
 <script>
+  
+  // there is a bug, when the minutes is < 10
   export default {
     data() {
       return {
