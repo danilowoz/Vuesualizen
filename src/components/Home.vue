@@ -82,7 +82,8 @@ export default {
       this.$refs.time.value = '';
     },
     getLocalstorage() {
-      return JSON.parse(localStorage.getItem(localId));
+      const store = JSON.parse(localStorage.getItem(localId));
+      return store === null ? [] : store;
     },
     setLocalStorage() {
       localStorage.setItem(localId, JSON.stringify(this.items));
@@ -91,10 +92,12 @@ export default {
   watch: {
     items() {
       this.setLocalStorage();
+      this.edit = this.items.length === 0;
     },
   },
   created() {
     this.items = this.getLocalstorage();
+    this.edit = this.items.length === 0;
   },
 };
 </script>

@@ -1,10 +1,12 @@
 <template>
-  <div class="image" v-bind:style="{backgroundImage: 'url(' + itemFiltered.image + ')'}">
-    <div class="content">
-      <span>
-        <h1>{{itemFiltered.title}} <small>until {{itemFiltered.time | moment("MMMM Do YYYY")}}</small></h1>
-        <p>{{itemFiltered.desc}}</p>
-      </span>
+  <div v-if="itemFiltered">
+    <div class="image" v-bind:style="{backgroundImage: 'url(' + itemFiltered.image + ')'}">
+      <div class="content">
+        <span>
+          <h1>{{itemFiltered.title}} <small>until {{itemFiltered.time | moment("MMMM Do YYYY")}}</small></h1>
+          <p>{{itemFiltered.desc}}</p>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -18,7 +20,11 @@
     props: ['items'],
     computed: {
       itemFiltered() {
-        return this.items[Math.floor(Math.random() * this.items.length)];
+        if (this.items && this.items.length > 0) {
+          return this.items[Math.floor(Math.random() * this.items.length)];
+        }
+
+        return false;
       },
     },
   };
