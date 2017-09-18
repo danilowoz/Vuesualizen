@@ -43,7 +43,7 @@
     background: linear-gradient(to bottom, rgba(0,0,0,.8) 0%,rgba(0,0,0,0) 100%);
     position: absolute;
     z-index: 9999;
-    padding: 30px;
+    padding: 40px;
     padding-bottom: 200px;
     top: 0;
     left: 0;

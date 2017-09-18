@@ -4,9 +4,11 @@
     <Clock class="clock"></Clock>
     <Focus :items="items"></Focus>
 
-    <button @click="menu">Edit</button>
-
     <div v-bind:class="{ 'edit': edit }" class="config">
+      <button class="edit-button" @click="menu">
+        <img src='../assets/config.svg' />
+      </button>
+
       <h1>My goals</h1>
       <form action="">
         <div class="image-wrap">
@@ -106,12 +108,8 @@ export default {
   background: #fff;
   z-index: 9999999;
   padding: 20px;
-  transition: all .3s ease;
-  right: -100%;
-}
-
-.config.edit {
-  right: 0;
+  transition: all .5s ease;
+  right: calc(-30vw - 40px);
 }
 
 .list.edit:before {
@@ -126,11 +124,35 @@ export default {
   opacity: .7;
 }
 
+.config.edit {
+  right: 0;
+}
+
 .config h1 {
   margin: 0;
   color: #a1b323;
   margin-bottom: 30px;
   font-weight: 300;
+}
+
+.edit-button {
+  display: block;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: -70px;
+  bottom: 30px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  outline: 0;
+  opacity: .4;
+  transition: all .3s ease;
+}
+
+.config.edit .edit-button,
+.edit-button:hover {
+  opacity: 1;
 }
 
 form {

@@ -2,7 +2,7 @@
   <div class="image" v-bind:style="{backgroundImage: 'url(' + itemFiltered.image + ')'}">
     <div class="content">
       <span>
-        <h1>{{itemFiltered.title}} <small>until {{itemFiltered.time}}</small></h1>
+        <h1>{{itemFiltered.title}} <small>until {{itemFiltered.time | moment("MMMM Do YYYY")}}</small></h1>
         <p>{{itemFiltered.desc}}</p>
       </span>
     </div>
@@ -10,6 +10,10 @@
 </template>
 
 <script>
+  import Vue from 'vue';
+
+  Vue.use(require('vue-moment'));
+
   export default {
     props: ['items'],
     computed: {
@@ -34,7 +38,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 30px;
+    padding: 40px;
     padding-top: 200px;
     color: #fff;
     background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,.8) 100%);
