@@ -1,10 +1,12 @@
 <template>
-  <div class="list">
+  <div v-bind:class="{ 'edit': edit }" class="list">
 
     <Clock class="clock"></Clock>
     <Focus :items="items"></Focus>
 
-    <div class="config edit">
+    <button @click="menu">Edit</button>
+
+    <div v-bind:class="{ 'edit': edit }" class="config">
       <h1>My goals</h1>
       <form action="">
         <div class="image-wrap">
@@ -44,9 +46,13 @@ export default {
   data() {
     return {
       items: [],
+      edit: false,
     };
   },
   methods: {
+    menu() {
+      this.edit = !this.edit;
+    },
     remove(index) {
       this.items.splice(index, 1);
     },
@@ -96,16 +102,16 @@ export default {
   position: fixed;
   top: 0;
   bottom: 0;
-  right: 0;
   width: 30vw;
   background: #fff;
   z-index: 9999999;
   padding: 20px;
   transition: all .3s ease;
+  right: -100%;
 }
 
 .config.edit {
-  right: -100%;
+  right: 0;
 }
 
 .list.edit:before {
