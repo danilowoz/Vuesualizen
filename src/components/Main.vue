@@ -2,7 +2,7 @@
   <div class="image" v-bind:style="{backgroundImage: 'url(' + itemFiltered.image+ ')'}">
     <div class="content">
       <span>
-        <h1>{{itemFiltered.title}}</h1>
+        <h1>{{itemFiltered.title}} <small>until {{itemFiltered.time}}</small></h1>
         <p>{{itemFiltered.desc}}</p>
       </span>
     </div>
@@ -52,8 +52,14 @@
     margin-bottom: 15px;
   }
 
+  small {
+    opacity: .9;
+    font-weight: normal;
+  }
+
   p {
     margin: 0;
     opacity: .7;
+    font-size: 14px;
   }
 </style>
