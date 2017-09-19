@@ -20,7 +20,7 @@
 
         <span>
           <label for="title">Title</label>
-          <input placeholder="Small and easy to remember" required ref="title" type="text">
+          <input placeholder="Small and easy to remember" required ref="title" type="text" v-model="title">
 
           <label for="time">Deadline</label>
           <input placeholder="A deadline" required ref="time" type="date" />
@@ -47,6 +47,7 @@
     data() {
       return {
         dataItems: [],
+        title: '',
       };
     },
     methods: {
@@ -54,8 +55,8 @@
         this.items.splice(index, 1);
       },
       add() {
+        const { title } = this;
         const self = this;
-        const title = this.$refs.title.value;
         const desc = this.$refs.desc.value;
         const time = this.$refs.time.value;
         const reader = new FileReader();
@@ -82,11 +83,6 @@
         this.$refs.desc.value = '';
         this.$refs.file.value = '';
         this.$refs.time.value = '';
-      },
-    },
-    watch: {
-      dataItems() {
-        this.$emit('update-data-items', this.dataItems);
       },
     },
     created() {
