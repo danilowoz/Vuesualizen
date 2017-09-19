@@ -48,11 +48,11 @@
     created() {
       this.sorterItems();
     },
-    // computed: {
-    //   itemFiltered() {
-    //     return this.sorterItems();
-    //   },
-    // },
+    watch: {
+      items() {
+        this.sorterItems();
+      },
+    },
   };
 </script>
 
