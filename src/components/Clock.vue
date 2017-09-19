@@ -5,27 +5,27 @@
 </template>
 
 <script>
+  import moment from 'moment';
   
-  // there is a bug, when the minutes is < 10
   export default {
     data() {
       return {
-        hour: new Date().getHours(),
-        minutes: new Date().getMinutes(),
+        hour: moment().format('h'),
+        minutes: moment().format('mm'),
       };
     },
     methods: {
       updateHour() {
         setInterval(() => {
-          if (this.hour !== new Date().getHours()) {
-            this.hour = new Date().getHours();
+          if (this.hour !== moment().format('h')) {
+            this.hour = moment().format('h');
           }
         }, 100);
       },
       updateMinutes() {
         setInterval(() => {
-          if (this.minutes !== new Date().getMinutes()) {
-            this.minutes = new Date().getMinutes();
+          if (this.minutes !== moment().format('mm')) {
+            this.minutes = moment().format('mm');
           }
         }, 100);
       },

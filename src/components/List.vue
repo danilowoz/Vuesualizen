@@ -20,7 +20,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .list-item {
     margin: 0 -20px;
     border-top: 1px solid #eee;
@@ -33,12 +33,11 @@ export default {
   p {
     line-height: 1.2;
     margin: 0 0 10px;
-  }
-
-  p span {
-    font-size: 12px;
-    display: block;
-    color: #333;
+    span {
+      font-size: 12px;
+      display: block;
+      color: #333;
+    }
   }
 
   img {
@@ -60,11 +59,10 @@ export default {
     transition: all .3s ease;
     cursor: pointer;
     outline: none;
-  }
-
-  button:hover {
-    background: #b33423;
-    border: 1px solid #b33423;
-    color: #fff;
+    &:hover {
+      background: #b33423;
+      border: 1px solid #b33423;
+      color: #fff;
+    }
   }
 </style>
