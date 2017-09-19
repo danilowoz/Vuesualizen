@@ -1,10 +1,8 @@
 <template>
   <div v-bind:class="{ 'edit': edit }" class="list">
-
     <Clock class="clock"></Clock>
     <Focus :items="items"></Focus>
     <Config :items="items" :edit="edit" :menu="menu"></Config>
-    
   </div>
 </template>
 

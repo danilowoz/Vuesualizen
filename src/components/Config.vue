@@ -7,28 +7,31 @@
       </button>
     </div>
 
-    <h1>My goals</h1>
-    
-    <form action="">
-      <div class="image-wrap">
-        <label>Image</label>
-        <input accept="image/*" placeholder="Paste an url for the image" ref="imagem" type="text">
-        <Btn :func="add" :text="'Add goal'" :type="'default'"></Btn>
-      </div>
+    <div class="content">
+      <h1>My goals</h1>
+      
+      <form action="">
+        <div class="image-wrap">
+          <label>Image</label>
+          <input accept="image/*" placeholder="Paste an url for the image" ref="imagem" type="text">
+          <Btn :func="add" :text="'Add goal'" :type="'default'"></Btn>
+        </div>
 
-      <span>
-        <label for="title">Title</label>
-        <input placeholder="Small and easy to remember" required ref="title" type="text">
+        <span>
+          <label for="title">Title</label>
+          <input placeholder="Small and easy to remember" required ref="title" type="text">
 
-        <label for="time">Deadline</label>
-        <input placeholder="A deadline" required ref="time" type="date" />
+          <label for="time">Deadline</label>
+          <input placeholder="A deadline" required ref="time" type="date" />
 
-        <label for="desc">Description<small></small></label>
-        <textarea placeholder="Tell with more details" required ref="desc"></textarea>
-      </span>
-    </form>
+          <label for="desc">Description<small></small></label>
+          <textarea placeholder="Tell with more details" required ref="desc"></textarea>
+        </span>
+      </form>
 
-    <List :items="items" :remove="remove"></List>
+      <List :items="items" :remove="remove"></List>
+    </div>
+
   </div>
 
 </template>
@@ -92,7 +95,6 @@
   width: 30vw;
   background: #fff;
   z-index: 9999999;
-  padding: 20px;
   transition: all .5s ease;
   right: 0;
   transform: translateX(calc(30vw + 40px));
@@ -107,12 +109,18 @@
   }
 }
 
+.content {
+  padding: 20px 20px 0;
+  overflow: scroll;
+  height: 100%;
+}
+
 .edit-button {
   display: block;
   width: 35px;
   height: 35px;
   position: absolute;
-  left: -70px;
+  left: -100px;
   bottom: 30px;
   background: none;
   border: 0;

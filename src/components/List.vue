@@ -24,13 +24,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  div {
+    padding-bottom: 20px;
+    background: #fafafa;
+  }
   .list-item {
     margin: 0 -20px;
     border-top: 1px solid #eee;
     text-align: left;
     padding: 15px 20px;
     display: flex;
-    background: #fafafa;
   }
 
   p {

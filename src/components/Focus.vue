@@ -1,10 +1,15 @@
 <template>
-  <div v-if="itemFiltered">
-    <div class="image" v-bind:style="{backgroundImage: 'url(' + itemFiltered.image + ')'}">
+  <div v-if="itemSelected">
+    <div class="image" v-bind:style="{backgroundImage: 'url(' + itemSelected.image + ')'}">
+        
+      <button class="refresh" @click.prevent="sorterItems">
+        <img src='../assets/refresh.svg' />
+      </button>
+
       <div class="content">
         <span>
-          <h1>{{itemFiltered.title}} <small>until {{itemFiltered.time | moment("MMMM Do YYYY")}}</small></h1>
-          <p>{{itemFiltered.desc}}</p>
+          <h1>{{itemSelected.title}} <small>until {{itemSelected.time | moment("MMMM Do YYYY")}}</small></h1>
+          <p>{{itemSelected.desc}}</p>
         </span>
       </div>
     </div>
@@ -18,15 +23,36 @@
 
   export default {
     props: ['items'],
-    computed: {
-      itemFiltered() {
+    data() {
+      return {
+        itemSelected: [],
+      };
+    },
+    methods: {
+      sorterItems() {
+        let resultItem = [];
+
         if (this.items && this.items.length > 0) {
-          return this.items[Math.floor(Math.random() * this.items.length)];
+          resultItem = this.items[Math.floor(Math.random() * this.items.length)];
+
+          if (this.itemSelected === resultItem) {
+            this.sorterItems();
+          } else {
+            this.itemSelected = resultItem;
+          }
         }
 
         return false;
       },
     },
+    created() {
+      this.sorterItems();
+    },
+    // computed: {
+    //   itemFiltered() {
+    //     return this.sorterItems();
+    //   },
+    // },
   };
 </script>
 
@@ -54,7 +80,6 @@
     }
   }
 
-
   h1 {
     font-weight: bold;
     font-size: 22px;
@@ -71,5 +96,24 @@
     margin: 0;
     opacity: .7;
     font-size: 14px;
+  }
+
+  .refresh {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+    opacity: .2;
+    transition: all .3s ease;
+    z-index: 999999;
+    &:hover {
+      opacity: 1;
+    }
   }
 </style>
