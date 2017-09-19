@@ -3,7 +3,7 @@
     <div class="list-item" v-for="(item, index) in items">
       <span>
         <img :src="item.image" />
-        <button @click.prevent="remove(index)">Remover</button>
+        <Btn :func="remove" :index="index" :text="'Remover'" :type="'error'"></Btn>
       </span>
       <span>
         <p><span>Title:</span> {{item.title}}</p>
@@ -15,8 +15,11 @@
 </template>
 
 <script>
+import Btn from '@/components/shared/Btn';
+
 export default {
   props: ['items', 'remove'],
+  components: { Btn },
 };
 </script>
 
@@ -47,22 +50,4 @@ export default {
     margin-right: 15px;
   }
 
-  button {
-    background: #fff;
-    border: 1px solid #ddd;
-    color: #aaa;
-    border-radius: 3px;
-    line-height: 20px;
-    width: 100px;
-    margin-top: 20px;
-    text-align: center;
-    transition: all .3s ease;
-    cursor: pointer;
-    outline: none;
-    &:hover {
-      background: #b33423;
-      border: 1px solid #b33423;
-      color: #fff;
-    }
-  }
 </style>

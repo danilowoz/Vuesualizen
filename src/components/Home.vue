@@ -45,7 +45,9 @@ export default {
   watch: {
     items() {
       this.setLocalStorage();
-      this.edit = this.items.length === 0;
+      if (this.items.length === 0) {
+        this.edit = true;
+      }
     },
   },
   created() {

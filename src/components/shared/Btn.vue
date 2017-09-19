@@ -1,0 +1,44 @@
+<template>
+  <button :class="type" @click.prevent="func(index)">{{text}}</button>
+</template>
+
+<script>
+export default {
+  props: ['func', 'text', 'type', 'index'],
+};
+</script>
+
+<style scoped>
+
+.default {
+  background: #a1b323;
+  border: 0;
+  color: white;
+  border-radius: 3px;
+  line-height: 20px;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  transition: all .3s ease;
+}
+
+.error {
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #aaa;
+  border-radius: 3px;
+  line-height: 20px;
+  width: 100px;
+  margin-top: 20px;
+  text-align: center;
+  transition: all .3s ease;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    background: #b33423;
+    border: 1px solid #b33423;
+    color: #fff;
+  }
+}
+
+</style>

@@ -2,7 +2,7 @@
   <div v-bind:class="{ 'edit': edit }" class="config">
 
     <div v-if="dataItems.length > 0">
-      <button class="edit-button" @click="menu">
+      <button class="edit-button" @click.prevent="menu">
         <img src='../assets/config.svg' />
       </button>
     </div>
@@ -13,7 +13,7 @@
       <div class="image-wrap">
         <label>Image</label>
         <input accept="image/*" placeholder="Paste an url for the image" ref="imagem" type="text">
-        <button @click.prevent="add">Add goal</button>
+        <Btn :func="add" :text="'Add goal'" :type="'default'"></Btn>
       </div>
 
       <span>
@@ -35,9 +35,10 @@
 
 <script>
   import List from '@/components/List';
+  import Btn from '@/components/shared/Btn';
 
   export default {
-    components: { List },
+    components: { List, Btn },
     props: ['items', 'edit', 'menu'],
     data() {
       return {
@@ -177,17 +178,6 @@ form {
       height: 100px;
       display: block;
     }
-  }
-  button {
-    background: #a1b323;
-    border: 0;
-    color: white;
-    border-radius: 3px;
-    line-height: 20px;
-    width: 100%;
-    margin-top: 20px;
-    text-align: center;
-    transition: all .3s ease;
   }
 }
 </style>
