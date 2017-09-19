@@ -1,8 +1,11 @@
 <template>
   <div v-bind:class="{ 'edit': edit }" class="config">
-    <button class="edit-button" @click="menu">
-      <img src='../assets/config.svg' />
-    </button>
+
+    <div v-if="dataItems.length > 0">
+      <button class="edit-button" @click="menu">
+        <img src='../assets/config.svg' />
+      </button>
+    </div>
 
     <h1>My goals</h1>
     <form action="">
@@ -31,12 +34,15 @@
 
 <script>
   import List from '@/components/List';
-  
-  const localId = 'visualizem';
 
   export default {
     components: { List },
-    props: ['items', 'edit'],
+    props: ['items', 'edit', 'menu'],
+    data() {
+      return {
+        dataItems: [],
+      };
+    },
     methods: {
       remove(index) {
         this.items.splice(index, 1);
@@ -48,7 +54,7 @@
         const time = this.$refs.time.value;
 
         if (title !== '' && desc !== '' && image !== '' && time !== '') {
-          this.$set(this.items, this.items.length, {
+          this.$set(this.dataItems, this.dataItems.length, {
             title,
             desc,
             image,
@@ -64,21 +70,14 @@
         this.$refs.imagem.value = '';
         this.$refs.time.value = '';
       },
-      getLocalstorage() {
-        const store = JSON.parse(localStorage.getItem(localId));
-        return store === null ? [] : store;
-      },
-      setLocalStorage() {
-        localStorage.setItem(localId, JSON.stringify(this.items));
-      },
     },
     watch: {
-      items() {
-        this.setLocalStorage();
+      dataItems() {
+        this.$emit('update-data-items', this.dataItems);
       },
     },
     created() {
-      this.items = this.getLocalstorage();
+      this.dataItems = this.items;
     },
   };
 </script>

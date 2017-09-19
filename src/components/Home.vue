@@ -3,7 +3,7 @@
 
     <Clock class="clock"></Clock>
     <Focus :items="items"></Focus>
-    <Config :items="items" :edit="edit"></Config>
+    <Config :items="items" :edit="edit" :menu="menu"></Config>
     
   </div>
 </template>
@@ -12,6 +12,8 @@
 import Clock from '@/components/Clock';
 import Focus from '@/components/Focus';
 import Config from '@/components/Config';
+
+const localId = 'visualizem';
 
 export default {
   name: 'list',
@@ -26,15 +28,28 @@ export default {
     menu() {
       this.edit = !this.edit;
     },
+    getLocalstorage() {
+      try {
+        const store = JSON.parse(localStorage.getItem(localId));
+        return Array.isArray(store) ? store : [];
+      } catch (e) {
+        this.setLocalStorage();
+      }
+
+      return false;
+    },
+    setLocalStorage() {
+      localStorage.setItem(localId, JSON.stringify(this.items));
+    },
   },
   watch: {
     items() {
+      this.setLocalStorage();
       this.edit = this.items.length === 0;
-      console.log('items');
     },
   },
   created() {
-    console.log(this.items);
+    this.items = this.getLocalstorage();
     this.edit = this.items.length === 0;
   },
 };
