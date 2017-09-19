@@ -120,7 +120,7 @@
   width: 35px;
   height: 35px;
   position: absolute;
-  left: -100px;
+  left: -105px;
   bottom: 30px;
   background: none;
   border: 0;

@@ -67,6 +67,16 @@ export default {
   bottom: 0;
   z-index: 9999999;
   opacity: .7;
+  animation: fade .3s ease;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: .7;
+  }
 }
 
 </style>
