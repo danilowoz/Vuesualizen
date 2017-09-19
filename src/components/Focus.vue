@@ -30,7 +30,7 @@
   };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .image {
     width: 100vw;
     height: 100vh;
@@ -47,13 +47,13 @@
     padding: 40px;
     padding-top: 200px;
     color: #fff;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,.8) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+    span {
+      width: 40%;
+      display: block;
+    }
   }
 
-  .content span {
-    width: 40%;
-    display: block;
-  }
 
   h1 {
     font-weight: bold;

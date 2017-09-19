@@ -8,6 +8,7 @@
     </div>
 
     <h1>My goals</h1>
+    
     <form action="">
       <div class="image-wrap">
         <label>Image</label>
@@ -25,8 +26,8 @@
         <label for="desc">Description<small></small></label>
         <textarea placeholder="Tell with more details" required ref="desc"></textarea>
       </span>
-
     </form>
+
     <List :items="items" :remove="remove"></List>
   </div>
 
@@ -82,8 +83,7 @@
   };
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
 .config {
   position: fixed;
   top: 0;
@@ -95,17 +95,15 @@
   transition: all .5s ease;
   right: 0;
   transform: translateX(calc(30vw + 40px));
-}
-
-.config.edit {
-  transform: translateX(0);
-}
-
-.config h1 {
-  margin: 0;
-  color: #a1b323;
-  margin-bottom: 30px;
-  font-weight: 300;
+  &.edit {
+    transform: translateX(0);
+  }
+  h1 {
+    margin: 0;
+    color: #a1b323;
+    margin-bottom: 30px;
+    font-weight: 300;
+  }
 }
 
 .edit-button {
@@ -123,8 +121,7 @@
   transition: all .3s ease;
 }
 
-.config.edit .edit-button,
-.edit-button:hover {
+.config.edit .edit-button, .edit-button:hover {
   opacity: 1;
 }
 
@@ -132,73 +129,65 @@ form {
   padding-bottom: 20px;
   display: flex;
   width: 100%;
+  span {
+    width: 100%;
+  }
+  label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 2px;
+    font-size: 12px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  input, textarea {
+    border: 1px solid #eee;
+    padding: 5px 10px;
+    height: 30px;
+    border-radius: 3px;
+    resize: none;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all .3s ease;
+  }
+  input:focus {
+    outline: none;
+    border: 1px solid #a1b323;
+  }
+  textarea {
+    &:focus {
+      outline: none;
+      border: 1px solid #a1b323;
+    }
+    height: 50px;
+  }
+  .image-wrap {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin-right: 15px;
+    padding: 0;
+    border-radius: 3px;
+    position: relative;
+    input {
+      line-height: 85px;
+      width: 100px;
+      height: 100px;
+      display: block;
+    }
+  }
+  button {
+    background: #a1b323;
+    border: 0;
+    color: white;
+    border-radius: 3px;
+    line-height: 20px;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    transition: all .3s ease;
+  }
 }
-
-form span {
-  width: 100%;
-}
-
-form label {
-  display: block;
-  margin-top: 10px;
-  margin-bottom: 2px;
-  font-size: 12px;
-}
-
-form label:first-child {
-  margin-top: 0;
-}
-
-form input,
-form textarea {
-  border: 1px solid #eee;
-  padding: 5px 10px;
-  height: 30px;
-  border-radius: 3px;
-  resize: none;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  width: 100%;
-  box-sizing: border-box;
-  transition: all .3s ease;
-}
-
-form input:focus,
-form textarea:focus{
-  outline:none;
-  border:1px solid #a1b323;
-}
-
-form textarea {
-  height: 50px;
-}
-
-form .image-wrap {
-  width: 100px;
-  height: 100px;
-  display: block;
-  margin-right: 15px;
-  padding: 0;
-  border-radius: 3px;
-  position: relative;
-}
-
-form .image-wrap input {
-  line-height: 85px;
-  width: 100px;
-  height: 100px;
-  display: block;
-}
-
-form button {
-  background: #a1b323;
-  border: 0;
-  color: white;
-  border-radius: 3px;
-  line-height: 20px;
-  width: 100%;
-  margin-top: 20px;
-  text-align: center;
-  transition: all .3s ease;
-}
-
 </style>
