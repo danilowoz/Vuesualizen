@@ -13,7 +13,8 @@
       <form action="">
         <div class="image-wrap">
           <label>Image</label>
-          <input accept="image/*" placeholder="Paste an url for the image" ref="imagem" type="text">
+          <input accept="image/*" type="file" ref="file">
+          <!-- <input placeholder="Paste an url for the image" ref="imagem" type="text"> -->
           <Btn :func="add" :text="'Add goal'" :type="'default'"></Btn>
         </div>
 
@@ -53,26 +54,33 @@
         this.items.splice(index, 1);
       },
       add() {
+        const self = this;
         const title = this.$refs.title.value;
         const desc = this.$refs.desc.value;
-        const image = this.$refs.imagem.value;
         const time = this.$refs.time.value;
+        const reader = new FileReader();
+        let image = this.$refs.file.files[0];
 
-        if (title !== '' && desc !== '' && image !== '' && time !== '') {
-          this.$set(this.dataItems, this.dataItems.length, {
-            title,
-            desc,
-            image,
-            time,
-          });
+        reader.readAsDataURL(image);
+        reader.onloadend = function imageLoader(event) {
+          image = event.target.result;
 
-          this.cleanInput();
-        }
+          if (title !== '' && desc !== '' && image !== '' && time !== '') {
+            self.$set(self.dataItems, self.dataItems.length, {
+              title,
+              desc,
+              image,
+              time,
+            });
+
+            self.cleanInput();
+          }
+        };
       },
       cleanInput() {
         this.$refs.title.value = '';
         this.$refs.desc.value = '';
-        this.$refs.imagem.value = '';
+        this.$refs.file.value = '';
         this.$refs.time.value = '';
       },
     },
