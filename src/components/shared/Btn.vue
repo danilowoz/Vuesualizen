@@ -27,6 +27,10 @@ button {
   margin-top: 10px;
   text-align: center;
   transition: all .3s ease;
+
+  &:hover {
+    background: darken(#a1b323, 5%);
+  }
 }
 
 .error {

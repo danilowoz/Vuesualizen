@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:class="{ 'config': config }" class="list">
+  <div v-bind:class="{ 'config': config }" class="main">
     <Clock class="clock"></Clock>
     <Focus :items="items"></Focus>
     <Config :items="items" :config="config" :menu="menu"></Config>
@@ -14,7 +14,7 @@ import Config from '@/components/config/Config';
 const localId = 'visualizem';
 
 export default {
-  name: 'list',
+  name: 'main',
   components: { Clock, Focus, Config },
   data() {
     return {
@@ -55,24 +55,25 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
-.list {
+.main {
   animation: fade .3s ease;
+  
+  &.config:before {
+    content: "";
+    background: #a1b323;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999999;
+    opacity: .7;
+    animation: fade .3s ease;
+  }
 }
 
-.list.config:before {
-  content: "";
-  background: #a1b323;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999999;
-  opacity: .7;
-  animation: fade .3s ease;
-}
 
 @keyframes fade {
   0% {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="clock">
     {{hour}}:{{minutes}}
   </div>
 </template>
@@ -38,7 +38,7 @@
 </script>
 
 <style scoped>
-  div {
+  .clock {
     font-size: 40px;
     font-weight: lighter;
     color: #fff;

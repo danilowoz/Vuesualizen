@@ -44,34 +44,25 @@ export default {
 <style scoped lang="scss">
   .label-control {
     display: block;
-    margin-top: 10px;
     margin-bottom: 2px;
     font-size: 12px;
-    &:first-child {
-      margin-top: 0;
-    }
   }
 
   .image-wrap {
-    width: 142px;
-    height: 126px;
-    display: block;
     margin-right: 15px;
-    padding: 0;
-    border-radius: 3px;
-    position: relative;
 
     input {
-      line-height: 85px;
+      box-sizing: border-box;
       width: 100px;
       height: 100px;
       display: block;
-      font-family: 'Avenir', Helvetica, Arial, sans-serif;
       border: 1px solid #eee;
-      box-sizing: border-box;
+      font-family: 'Avenir', Helvetica, Arial, sans-serif;
+      line-height: 85px;
       padding: 5px 10px;
     }
   }
+
   .image-wrap__preview {
     width: 100px;
     height: 100px;
