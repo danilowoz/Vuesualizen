@@ -3,7 +3,7 @@
 
     <div v-if="dataItems.length > 0">
       <button class="config-button" @click.prevent="menu">
-        <img src='../assets/config.svg' />
+        <img src='../../assets/config.svg' />
       </button>
     </div>
 
@@ -11,22 +11,20 @@
       <h1>My goals</h1>
       
       <form action="">
-        <div class="image-wrap">
-          <label>Image</label>
-          <div class="image-wrap__preview" v-bind:style="{backgroundImage: 'url(' + image + ')'}">
-            <input accept="image/*" type="file" ref="file" @change="uploadImage">
-          </div>
+        
+        <span class="col-1">
+          <ImageForm :getImage="getImage" :updateImage="updateImage" :image="image"></ImageForm>
           <Btn :func="add" :text="'Add goal'" :type="'default'"></Btn>
-        </div>
+        </span>
 
-        <span>
-          <label for="title">Title</label>
+        <span  class="col-2">
+          <label class="label-control" for="title">Title</label>
           <input placeholder="Small and easy to remember" required type="text" v-model="title">
 
-          <label for="time">Deadline</label>
+          <label class="label-control" for="time">Deadline</label>
           <input placeholder="A deadline" required type="date" v-model="time"  />
 
-          <label for="desc">Description<small></small></label>
+          <label class="label-control" for="desc">Description<small></small></label>
           <textarea placeholder="Tell with more details" required v-model="desc"></textarea>
         </span>
       </form>
@@ -39,11 +37,12 @@
 </template>
 
 <script>
-  import List from '@/components/List';
   import Btn from '@/components/shared/Btn';
+  import List from '@/components/config/List';
+  import ImageForm from '@/components/config/ImageForm';
 
   export default {
-    components: { List, Btn },
+    components: { List, Btn, ImageForm },
     props: ['items', 'config', 'menu'],
     data() {
       return {
@@ -70,7 +69,7 @@
       },
       add() {
         const { image, title, time, desc } = this;
-
+        debugger;
         if (title !== null && desc !== null && image !== null && time !== null) {
           this.$set(this.dataItems, this.dataItems.length, {
             title,
@@ -86,14 +85,16 @@
           this.desc = null;
         }
       },
-      uploadImage() {
-        const self = this;
-        const file = this.$refs.file;
-        const reader = new FileReader();
-        reader.readAsDataURL(file.files[0]);
-        reader.onloadend = function imageLoader(event) {
-          self.image = event.target.result;
-        };
+      getImage(image) {
+        this.image = image;
+      },
+      updateImage() {
+        return this.image;
+      },
+    },
+    watch: {
+      image() {
+        this.updateImage();
       },
     },
     created() {
@@ -153,10 +154,13 @@ form {
   padding-bottom: 20px;
   display: flex;
   width: 100%;
-  span {
-    width: 100%;
+  .col-1 {
+    width: 115px;
   }
-  label {
+  .col-2 {
+    width: 100%;;
+  }
+  .label-control {
     display: block;
     margin-top: 10px;
     margin-bottom: 2px;
@@ -186,30 +190,6 @@ form {
       border: 1px solid #a1b323;
     }
     height: 50px;
-  }
-  .image-wrap {
-    width: 142px;
-    height: 142px;
-    display: block;
-    margin-right: 15px;
-    padding: 0;
-    border-radius: 3px;
-    position: relative;
-    
-    input {
-      line-height: 85px;
-      width: 100px;
-      height: 100px;
-      display: block;
-    }
-  }
-  .image-wrap__preview {
-    width: 100px;
-    height: 100px;
-    border-radius: 3px;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
   }
 }
 </style>
