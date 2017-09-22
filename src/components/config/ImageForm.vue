@@ -54,7 +54,7 @@ export default {
 
   .image-wrap {
     width: 142px;
-    height: 142px;
+    height: 126px;
     display: block;
     margin-right: 15px;
     padding: 0;

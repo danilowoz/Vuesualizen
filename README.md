@@ -1,4 +1,6 @@
-# VisualiZen
+# Visualizen
+
+The Visualizen will be a Chrome Extension that helps you attract your life goals by automatically showing it to you every day as a new tab in the browser.
 
 > A Vue.js project
 
