@@ -78,24 +78,24 @@
       width: 40%;
       display: block;
     }
-  }
 
-  h1 {
-    font-weight: bold;
-    font-size: 22px;
-    margin: 0;
-    margin-bottom: 15px;
-  }
+    h1 {
+      font-weight: bold;
+      font-size: 22px;
+      margin: 0;
+      margin-bottom: 15px;
+    }
 
-  small {
-    opacity: .9;
-    font-weight: normal;
-  }
+    small {
+      opacity: .9;
+      font-weight: normal;
+    }
 
-  p {
-    margin: 0;
-    opacity: .7;
-    font-size: 14px;
+    p {
+      margin: 0;
+      opacity: .7;
+      font-size: 14px;
+    }
   }
 
   .refresh {

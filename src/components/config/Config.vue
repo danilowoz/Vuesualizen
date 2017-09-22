@@ -78,7 +78,6 @@
             time,
           });
 
-          // clean
           this.image = null;
           this.title = null;
           this.time = null;
@@ -185,11 +184,12 @@ form {
     border: 1px solid #a1b323;
   }
   textarea {
+    height: 50px;
+    
     &:focus {
       outline: none;
       border: 1px solid #a1b323;
     }
-    height: 50px;
   }
 }
 </style>
