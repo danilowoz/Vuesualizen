@@ -3,6 +3,7 @@
     <div class="list-item" v-for="(item, index) in items">
       <span>
         <img :src="item.image" />
+        <Btn :func="edit" :index="index" :text="'Editar'" :type="'default'"></Btn>
         <Btn :func="remove" :index="index" :text="'Remover'" :type="'error'"></Btn>
       </span>
       <span>
@@ -18,7 +19,7 @@
 import Btn from '@/components/shared/Btn';
 
 export default {
-  props: ['items', 'remove'],
+  props: ['items', 'remove', 'edit'],
   components: { Btn },
 };
 </script>

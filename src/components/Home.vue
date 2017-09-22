@@ -1,8 +1,8 @@
 <template>
-  <div v-bind:class="{ 'edit': edit }" class="list">
+  <div v-bind:class="{ 'config': config }" class="list">
     <Clock class="clock"></Clock>
     <Focus :items="items"></Focus>
-    <Config :items="items" :edit="edit" :menu="menu"></Config>
+    <Config :items="items" :config="config" :menu="menu"></Config>
   </div>
 </template>
 
@@ -19,12 +19,12 @@ export default {
   data() {
     return {
       items: [],
-      edit: false,
+      config: false,
     };
   },
   methods: {
     menu() {
-      this.edit = !this.edit;
+      this.config = !this.config;
     },
     getLocalstorage() {
       try {
@@ -44,20 +44,24 @@ export default {
     items() {
       this.setLocalStorage();
       if (this.items.length === 0) {
-        this.edit = true;
+        this.config = true;
       }
     },
   },
   created() {
     this.items = this.getLocalstorage();
-    this.edit = this.items.length === 0;
+    this.config = this.items.length === 0;
   },
 };
 </script>
 
 <style scoped>
 
-.list.edit:before {
+.list {
+  animation: fade .3s ease;
+}
+
+.list.config:before {
   content: "";
   background: #a1b323;
   position: fixed;

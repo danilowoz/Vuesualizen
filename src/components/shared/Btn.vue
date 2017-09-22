@@ -8,16 +8,23 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+button {
+  transition: all .3s ease;
+  cursor: pointer;
+  outline: none;
+}
 
 .default {
+  display: block;
   background: #a1b323;
   border: 0;
   color: white;
   border-radius: 3px;
   line-height: 20px;
-  width: 100%;
-  margin-top: 20px;
+  width: 100px;
+  margin-top: 10px;
   text-align: center;
   transition: all .3s ease;
 }
@@ -29,11 +36,9 @@ export default {
   border-radius: 3px;
   line-height: 20px;
   width: 100px;
-  margin-top: 20px;
+  margin-top: 10px;
   text-align: center;
-  transition: all .3s ease;
-  cursor: pointer;
-  outline: none;
+
   &:hover {
     background: #b33423;
     border: 1px solid #b33423;
