@@ -9,7 +9,7 @@
 <script>
 import Clock from '@/components/Clock';
 import Focus from '@/components/Focus';
-import Config from '@/components/Config';
+import Config from '@/components/config/Config';
 
 const localId = 'visualizem';
 
