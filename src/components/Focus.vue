@@ -83,18 +83,26 @@
       font-weight: bold;
       font-size: 22px;
       margin: 0;
-      margin-bottom: 15px;
+      margin-bottom: 5px;
+      position: relative;
+      animation: slideLeft 1s .4s ease forwards;
+      transform: translateX(-20px);
+      opacity: 0;
     }
 
     small {
       opacity: .9;
       font-weight: normal;
+      font-size: .8em;
     }
 
     p {
       margin: 0;
       opacity: .7;
       font-size: 14px;
+      animation: slideLeft 1s .6s ease forwards;
+      transform: translateX(-20px);
+      opacity: 0;
     }
   }
 
@@ -116,4 +124,5 @@
       opacity: 1;
     }
   }
+  
 </style>

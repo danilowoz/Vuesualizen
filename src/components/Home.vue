@@ -74,14 +74,4 @@ export default {
   }
 }
 
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: .7;
-  }
-}
-
 </style>

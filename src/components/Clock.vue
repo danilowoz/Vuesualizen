@@ -1,6 +1,8 @@
 <template>
   <div class="clock">
-    {{hour}}:{{minutes}}
+    <span>
+      {{hour}}:{{minutes}}
+    </span>
   </div>
 </template>
 
@@ -37,7 +39,7 @@
   };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .clock {
     font-size: 40px;
     font-weight: lighter;
@@ -50,5 +52,11 @@
     top: 0;
     left: 0;
     right: 0;
+    span {
+      display: block;
+      animation: slideLeft 1s .2s ease forwards;
+      transform: translateX(-20px);
+      opacity: 0;
+    }
   }
 </style>
