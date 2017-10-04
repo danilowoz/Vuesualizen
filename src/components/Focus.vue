@@ -1,16 +1,12 @@
 <template>
   <div v-if="itemSelected">
     <div class="image" v-bind:style="{backgroundImage: 'url(' + itemSelected.image + ')'}">
-        
-      <button class="refresh" @click.prevent="sorterItems">
-        <img src='../assets/refresh.svg' />
-      </button>
-
       <div class="content">
         <span>
           <h1>{{itemSelected.title}} <small>until {{itemSelected.time | moment("MMMM Do YYYY")}}</small></h1>
           <p>{{itemSelected.desc}}</p>
         </span>
+        <div v-if="counter" class="counter"></div>
       </div>
     </div>
   </div>
@@ -26,10 +22,12 @@
     data() {
       return {
         itemSelected: [],
+        counter: false,
       };
     },
     methods: {
       sorterItems() {
+        this.counter = false;
         let resultItem = [];
 
         if (this.items && this.items.length > 0) {
@@ -39,6 +37,9 @@
             this.sorterItems();
           } else {
             this.itemSelected = resultItem;
+            setTimeout(() => {
+              this.counter = true;
+            }, 1);
           }
         }
 
@@ -47,6 +48,9 @@
     },
     created() {
       this.sorterItems();
+      setInterval(() => {
+        this.sorterItems();
+      }, 10000);
     },
     watch: {
       items() {
@@ -57,6 +61,8 @@
 </script>
 
 <style scoped lang="scss">
+  $velocityCounter: 10000ms;
+
   .image {
     width: 100vw;
     height: 100vh;
@@ -74,6 +80,7 @@
     padding-top: 200px;
     color: #fff;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+
     span {
       width: 40%;
       display: block;
@@ -85,7 +92,7 @@
       margin: 0;
       margin-bottom: 5px;
       position: relative;
-      animation: slideLeft 1s .4s ease forwards;
+      animation: slideLeft 1s .5s ease forwards;
       transform: translateX(-20px);
       opacity: 0;
     }
@@ -100,29 +107,47 @@
       margin: 0;
       opacity: .7;
       font-size: 14px;
-      animation: slideLeft 1s .6s ease forwards;
+      animation: slideLeft 1s .7s ease forwards;
       transform: translateX(-20px);
       opacity: 0;
     }
   }
 
-  .refresh {
+  .counter {
     display: block;
-    width: 30px;
-    height: 30px;
+    margin: 0 40px;
     position: absolute;
-    right: 30px;
-    top: 30px;
-    background: none;
-    border: 0;
-    cursor: pointer;
-    outline: 0;
-    opacity: .2;
-    transition: all .3s ease;
-    z-index: 999999;
-    &:hover {
-      opacity: 1;
+    left: 0;
+    bottom: 20px;
+    width: calc(100% - 80px);
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      border-bottom: 1px solid #fff;
+      opacity: .1;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-bottom: 1px solid #fff;
+      opacity: .3;
+      width: 100%;
+      animation: counter $velocityCounter linear;
+      transform-origin: left center;
     }
   }
   
+  @keyframes counter {
+    0% {
+      transform: scale(0,1)
+    }
+    100% {
+      transform: scale(1,1)
+    }
+  }
 </style>
