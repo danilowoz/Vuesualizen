@@ -1,6 +1,9 @@
 <template>
   <div v-if="itemSelected">
     <div class="image" v-bind:style="{backgroundImage: 'url(' + itemSelected.image + ')'}">
+      <button class="refresh" @click.prevent="sorterItems">
+        <img src='../assets/refresh.svg' />
+      </button>
       <div class="content">
         <span>
           <h1>{{itemSelected.title}} <small>until {{itemSelected.time | moment("MMMM Do YYYY")}}</small></h1>
@@ -50,7 +53,7 @@
       this.sorterItems();
       setInterval(() => {
         this.sorterItems();
-      }, 10000);
+      }, 13000);
     },
     watch: {
       items() {
@@ -61,7 +64,7 @@
 </script>
 
 <style scoped lang="scss">
-  $velocityCounter: 10000ms;
+  $velocityCounter: 13000ms;
 
   .image {
     width: 100vw;
@@ -113,12 +116,31 @@
     }
   }
 
+  .refresh {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+    opacity: .2;
+    transition: all .3s ease;
+    z-index: 999999;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
   .counter {
     display: block;
     margin: 0 40px;
     position: absolute;
     left: 0;
-    bottom: 20px;
+    bottom: 21px;
     width: calc(100% - 80px);
     &:before {
       content: "";
