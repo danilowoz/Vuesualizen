@@ -141,7 +141,7 @@
   border: 0;
   cursor: pointer;
   outline: 0;
-  opacity: .4;
+  opacity: .3;
   transition: all .3s ease;
 }
 
