@@ -19,7 +19,20 @@
 import Btn from '@/components/shared/Btn';
 
 export default {
-  props: ['items', 'remove', 'edit'],
+  props: {
+    items: {
+      type: Array,
+      required: true,
+    },
+    remove: {
+      type: Function,
+      required: true,
+    },
+    edit: {
+      type: Function,
+      required: true,
+    },
+  },
   components: { Btn },
 };
 </script>
