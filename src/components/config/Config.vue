@@ -69,7 +69,6 @@
       },
       add() {
         const { image, title, time, desc } = this;
-        debugger;
         if (title !== null && desc !== null && image !== null && time !== null) {
           this.$set(this.dataItems, this.dataItems.length, {
             title,
