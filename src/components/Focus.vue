@@ -21,7 +21,12 @@
   Vue.use(require('vue-moment'));
 
   export default {
-    props: ['items'],
+    props: {
+      items: {
+        type: Array,
+        required: true,
+      },
+    },
     data() {
       return {
         itemSelected: [],

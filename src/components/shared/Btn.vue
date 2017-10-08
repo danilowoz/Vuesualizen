@@ -4,7 +4,24 @@
 
 <script>
 export default {
-  props: ['func', 'text', 'type', 'index'],
+  props: {
+    func: {
+      type: Function,
+      required: true,
+    },
+    text: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      default: 'text',
+    },
+    index: {
+      type: Number,
+      default: 0,
+    },
+  },
 };
 </script>
 

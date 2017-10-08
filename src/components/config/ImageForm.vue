@@ -10,7 +10,19 @@
 <script>
 
 export default {
-  props: ['getImage', 'updateImage', 'image'],
+  props: {
+    getImage: {
+      type: Function,
+      required: true,
+    },
+    updateImage: {
+      type: Function,
+      required: true,
+    },
+    image: {
+      type: String,
+    },
+  },
   data() {
     return {
       dataImage: null,

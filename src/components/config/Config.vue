@@ -43,7 +43,20 @@
 
   export default {
     components: { List, Btn, ImageForm },
-    props: ['items', 'config', 'menu'],
+    props: {
+      items: {
+        type: Array,
+        required: true,
+      },
+      config: {
+        type: Boolean,
+        required: true,
+      },
+      menu: {
+        type: Function,
+        required: true,
+      },
+    },
     data() {
       return {
         dataItems: [],
