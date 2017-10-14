@@ -31,7 +31,7 @@
     },
     data() {
       return {
-        itemSelected: {},
+        itemSelected: false,
         counter: false,
       };
     },
@@ -54,7 +54,7 @@
         } else if (this.items && this.items.length === 1) {
           this.itemSelected = this.items[0];
         } else {
-          this.itemSelected = [];
+          this.itemSelected = false;
         }
       },
     },
