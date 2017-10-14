@@ -2,16 +2,15 @@
   <div v-bind:class="{ 'config': config }" class="main">
     <Clock class="clock"></Clock>
     <Focus :items="items"></Focus>
-    <Config :items="items" :config="config" :menu="menu"></Config>
+    <Config :items="items" :config="config" :menu="menu" :getData="getData"></Config>
   </div>
 </template>
 
 <script>
+import localforage from 'localforage';
 import Clock from '@/components/Clock';
 import Focus from '@/components/Focus';
 import Config from '@/components/config/Config';
-
-const localId = 'visualizem';
 
 export default {
   name: 'main',
@@ -26,18 +25,14 @@ export default {
     menu() {
       this.config = !this.config;
     },
+    getData(value) {
+      this.items = value;
+    },
     getLocalstorage() {
-      try {
-        const store = JSON.parse(localStorage.getItem(localId));
-        return Array.isArray(store) ? store : [];
-      } catch (e) {
-        this.setLocalStorage();
-      }
-
-      return false;
+      return localforage.getItem('items');
     },
     setLocalStorage() {
-      localStorage.setItem(localId, JSON.stringify(this.items));
+      localforage.setItem('items', JSON.stringify(this.items));
     },
   },
   watch: {
@@ -49,8 +44,11 @@ export default {
     },
   },
   created() {
-    this.items = this.getLocalstorage();
-    this.config = this.items.length === 0;
+    this.getLocalstorage().then((value) => {
+      const store = JSON.parse(value);
+      this.items = Array.isArray(store) ? store : [];
+      this.config = this.items.length === 0;
+    });
   },
 };
 </script>

@@ -1,9 +1,11 @@
 <template>
   <div v-if="itemSelected">
     <div class="image" v-bind:style="{backgroundImage: 'url(' + itemSelected.image + ')'}">
-      <button class="refresh" @click.prevent="sorterItems">
-        <img src='../assets/refresh.svg' />
-      </button>
+      <div v-if="items.length > 1">
+        <button class="refresh" @click.prevent="sorterItems">
+          <img src='../assets/refresh.svg' />
+        </button>
+      </div>
       <div class="content">
         <span>
           <h1>{{itemSelected.title}} <small>until {{itemSelected.time | moment("MMMM Do YYYY")}}</small></h1>
@@ -29,7 +31,7 @@
     },
     data() {
       return {
-        itemSelected: [],
+        itemSelected: false,
         counter: false,
       };
     },
@@ -38,7 +40,7 @@
         this.counter = false;
         let resultItem = [];
 
-        if (this.items && this.items.length > 0) {
+        if (this.items && this.items.length > 1) {
           resultItem = this.items[Math.floor(Math.random() * this.items.length)];
 
           if (this.itemSelected === resultItem) {
@@ -49,9 +51,11 @@
               this.counter = true;
             }, 1);
           }
+        } else if (this.items && this.items.length === 1) {
+          this.itemSelected = this.items[0];
+        } else {
+          this.itemSelected = false;
         }
-
-        return false;
       },
     },
     created() {
