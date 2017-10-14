@@ -1,7 +1,7 @@
 <template>
   <div v-bind:class="{ 'opened': config }" class="config">
 
-    <div v-if="dataItems.length > 0">
+    <div v-if="items.length > 0">
       <button class="config-button" @click.prevent="menu">
         <img src='../../assets/config.svg' />
       </button>
@@ -56,6 +56,10 @@
         type: Function,
         required: true,
       },
+      getData: {
+        type: Function,
+        required: true,
+      },
     },
     data() {
       return {
@@ -104,12 +108,15 @@
       },
     },
     watch: {
+      dataItems() {
+        this.getData(this.dataItems);
+      },
+      items() {
+        this.dataItems = this.items;
+      },
       image() {
         this.updateImage();
       },
-    },
-    created() {
-      this.dataItems = this.items;
     },
   };
 </script>

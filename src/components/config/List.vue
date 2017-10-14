@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="list">
     <div class="list-item" v-for="(item, index) in items">
       <span>
         <img :src="item.image" />
@@ -38,11 +38,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  div {
+  .list {
     padding-bottom: 20px;
-    background: #fafafa;
   }
   .list-item {
+    background: #fafafa;
     margin: 0 -20px;
     border-top: 1px solid #eee;
     text-align: left;
