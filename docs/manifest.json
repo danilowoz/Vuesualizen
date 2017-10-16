@@ -1,0 +1,13 @@
+{
+  "name": "Vuezalizen",
+  "manifest_version": 2,
+  "version": "1.0",
+  "description": "MyExtension",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["activeTab", "storage"],
+  "sandbox": {
+    "pages": ["index.html"]
+  }
+}
