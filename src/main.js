@@ -10,5 +10,6 @@ new Vue({
   el: '#app',
   template: '<Home/>',
   components: { Home },
+  render: c => c(Home),
 });
 
