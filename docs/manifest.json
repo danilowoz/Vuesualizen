@@ -7,7 +7,4 @@
     "newtab": "index.html"
   },
   "permissions": ["activeTab", "storage"],
-  "sandbox": {
-    "pages": ["index.html"]
-  }
 }
