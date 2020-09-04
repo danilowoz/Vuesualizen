@@ -16,7 +16,7 @@
     "localforage": "^1.5.2",
     "moment": "^2.24.0",
     "vue": "^2.4.2",
-    "vue-moment": "^2.0.2",
+    "vue-moment": "^4.1.0",
     "vue-router": "^2.7.0",
     "vuex": "^2.4.0",
     "vuex-router-sync": "^4.3.2"
