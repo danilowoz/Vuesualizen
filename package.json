@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "localforage": "^1.5.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "vue": "^2.4.2",
     "vue-moment": "^4.1.0",
     "vue-router": "^2.7.0",
